@@ -1,0 +1,29 @@
+﻿@model List<Animales.Models.Animal>;
+
+
+<form asp-action="Mamifero" >
+        <div class="form-actions">
+            <p>
+                Find by name: <input type="text" name="searchString" />
+                <input type="submit" value="Search" class="btn btn-default" /> |
+                <a asp-action="Mamifero">Back to Full List</a>
+            </p>
+        </div>
+</form>
+<div id="contenedor" class="row">
+    @{
+
+        foreach (Animal animal in Model)
+        {
+
+            <ul class="list-group col-md-4">
+                <li class="list-group-item"><p>@animal.Id</p></li>
+                <li class="list-group-item"><h1>@animal.Nombre</h1></li>
+                <li class="list-group-item"><img class="img-responsive" src="@Url.Content(animal.Imagen)" /></li>
+                <li class="list-group-item"><p>@animal.Especie</p></li>
+                <li class="list-group-item"><p>@animal.Clase</p></li>
+            </ul>
+
+        };
+    }
+</div>

@@ -1,0 +1,46 @@
+﻿@model List<Animales.Models.Animal>
+
+@{
+    ViewData["Title"] = "Index";
+    var clases = (List<Animal>)ViewData["clases"];
+    
+}
+
+<form  asp-action="Index">
+    <input placeholder="Busca un animal" type="text" name="searchString" />
+    <select name="clase">
+        <option value="">Todos</option>
+     
+        <option value="Mamífero">Mamífero</option>
+        <option value="Ave">Ave</option>
+        <option value="Anfibio">Anfibio</option>
+        <option value="Pez">Pez</option>
+    </select>
+
+    <!--Dropdown-->
+
+
+
+    <input type="submit" value="Buscar" />
+</form>
+
+
+
+
+<div id="contenedor" class="row">
+    @{
+
+        foreach (Animal animal in Model)
+        {
+                <ul class="list-group col-md-4">
+                    <li class="list-group-item"><p>@animal.Id</p></li>
+                    <li class="list-group-item"><h1>@animal.Nombre</h1></li>
+                    <li class="list-group-item"><img class="img-responsive" src="@Url.Content(animal.Imagen)" /></li>
+                    <li class="list-group-item"><p>@animal.Especie</p></li>
+                    <li class="list-group-item"><p>@animal.Clase</p></li>
+                </ul>
+            
+
+        };
+    }
+</div>
